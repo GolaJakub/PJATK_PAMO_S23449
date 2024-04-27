@@ -27,7 +27,8 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/weightInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/weight"
@@ -39,7 +40,8 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/heightInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/height"

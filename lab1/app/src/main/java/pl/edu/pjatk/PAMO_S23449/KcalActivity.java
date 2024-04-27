@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 public class KcalActivity extends AppCompatActivity {
 
     @Override
@@ -28,6 +30,10 @@ public class KcalActivity extends AppCompatActivity {
         Button calculateButton = findViewById(R.id.calculate);
         TextView kcalResult = findViewById(R.id.kcal);
         AutoCompleteTextView sex = findViewById(R.id.sex);
+        TextInputLayout weightInputLayout = findViewById(R.id.weightInputLayout);
+        TextInputLayout heightInputLayout = findViewById(R.id.heightInputLayout);
+        TextInputLayout ageInputLayout = findViewById(R.id.ageInputLayout);
+        TextInputLayout sexLayout = findViewById(R.id.sexLayout);
         final String[] selectedSex = {null};
 
         String[] type = new String[]{"Mężczyzna", "Kobieta"};
@@ -49,6 +55,34 @@ public class KcalActivity extends AppCompatActivity {
         calculateButton.setOnClickListener(v -> {
             InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(calculateButton.getWindowToken(), 0);
+
+            if (weightValue.getText().toString().trim().isEmpty()) {
+                weightInputLayout.setError("To pole jest wymagane");
+                return;
+            } else {
+                weightInputLayout.setError(null);
+            }
+
+            if (heightValue.getText().toString().trim().isEmpty()) {
+                heightInputLayout.setError("To pole jest wymagane");
+                return;
+            } else {
+                heightInputLayout.setError(null);
+            }
+
+            if (ageValue.getText().toString().trim().isEmpty()) {
+                ageInputLayout.setError("To pole jest wymagane");
+                return;
+            } else {
+                ageInputLayout.setError(null);
+            }
+
+            if (selectedSex[0] == null) {
+                sexLayout.setError("To pole jest wymagane");
+                return;
+            } else {
+                sexLayout.setError(null);
+            }
 
             float weight = Float.parseFloat(String.valueOf(weightValue.getText()));
             float height = Float.parseFloat(String.valueOf(heightValue.getText()));

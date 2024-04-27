@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 public class BmiActivity extends AppCompatActivity {
 
     @Override
@@ -23,16 +25,34 @@ public class BmiActivity extends AppCompatActivity {
         EditText heightValue = findViewById(R.id.height);
         Button calculateButton = findViewById(R.id.calculate);
         TextView result = findViewById(R.id.result);
+        TextInputLayout weightInputLayout = findViewById(R.id.weightInputLayout);
+        TextInputLayout heightInputLayout = findViewById(R.id.heightInputLayout);
 
         calculateButton.setOnClickListener(v -> {
             InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(calculateButton.getWindowToken(), 0);
+            if (weightValue.getText().toString().trim().isEmpty()) {
+                weightInputLayout.setError("To pole jest wymagane");
+                return;
+            }
 
-            float weight = Float.parseFloat(String.valueOf(weightValue.getText()));
-            float height = Float.parseFloat(String.valueOf(heightValue.getText())) / 100;
-            float bmi = weight / (height * height);
+            if (heightValue.getText().toString().trim().isEmpty()) {
+                heightInputLayout.setError("To pole jest wymagane");
+                return;
+            }
+
+            double weight = Float.parseFloat(String.valueOf(weightValue.getText()));
+            double height = Float.parseFloat(String.valueOf(heightValue.getText())) / 100;
+            double bmi = calculateBmi(weight, height);
             result.setText(String.valueOf(bmi));
         });
+    }
+
+    public double calculateBmi(double weight, double height) {
+        if (weight <= 0 || height <= 0) {
+            return Double.NaN;
+        }
+        return weight / (height * height);
     }
 
     private void configureBackButton() {
