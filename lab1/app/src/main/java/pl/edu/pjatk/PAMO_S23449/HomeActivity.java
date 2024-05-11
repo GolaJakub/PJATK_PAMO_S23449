@@ -18,6 +18,7 @@ public class HomeActivity extends AppCompatActivity {
         configureBmiButton();
         configureKcalButton();
         configureRecipiesButton();
+        configureBmiChartButton();
     }
 
     private void configureBmiButton() {
@@ -46,6 +47,16 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, RecipiesActivity.class));
+            }
+        });
+    }
+
+    private void configureBmiChartButton() {
+        Button recipiesButton = (Button) findViewById(R.id.bmiChartButton);
+        recipiesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, BmiProgressActivity.class));
             }
         });
     }

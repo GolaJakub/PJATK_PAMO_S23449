@@ -38,6 +38,7 @@ dependencies {
     implementation libs.activity
     implementation libs.constraintlayout
     implementation libs.core
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     testImplementation libs.junit
     testImplementation libs.mockito.core
     testImplementation "androidx.arch.core:core-testing:2.1.0"

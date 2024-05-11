@@ -37,5 +37,11 @@
         android:layout_height="wrap_content"
         android:text="Rekomandacje przepisów kulinarnych" />
 
+    <Button
+        android:id="@+id/bmiChartButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wykres bmi w czasie" />
+
 
 </LinearLayout>
